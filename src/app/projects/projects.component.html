@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="half">
+    <p>projects works!</p>
+    <h2>All Projects</h2>
+    <div *ngFor="let project of project">
+      <p>{{project.name}}</p>
+    </div>
+
+    <h2>All Tools</h2>
+    <div *ngFor="let tools of tools">
+      <input type="radio" class="languages" value="{{tools.id}}" [(ngModel)]="selectedTool" (change)="projectsByTools()"
+        class="btn-check " id="{{tools.tool}}">
+      <label class="btn btn-warning languages-btn" for="{{tools.tool}}">{{tools.tool}}</label>
+    </div>
+
+
+    <h2>All language</h2>
+    <div *ngFor="let language of language">
+      <input type="radio" class="languages" value="{{language.id}}" [(ngModel)]="selectedLanguage"
+        (change)="projectsByLanguage()" class="btn-check " id="{{language.id}}">
+      <label class="btn btn-warning languages-btn" for="{{language.id}}">{{language.language}}</label>
+    </div>
+
+
+    <h2>All database</h2>
+    <div *ngFor="let database of database">
+      <input type="radio" class="languages" value="{{database.id}}" [(ngModel)]="selectedDatabase"
+        (change)="projectsByDatabase()" class="btn-check " id="{{database.database}}">
+      <label class="btn btn-warning languages-btn" for="{{database.database}}">{{database.database}}</label>
+    </div>
+    <h2>All framework</h2>
+    <div *ngFor="let framework of framework">
+      <input type="radio" class="languages" value="{{framework.id}}" [(ngModel)]="selectedFramework"
+        (change)="projectsByFramework()" class="btn-check " id="{{framework.framework}}">
+      <label class="btn btn-warning languages-btn" for="{{framework.framework}}">{{framework.framework}}</label>
+    </div>
+  </div>
+  <div class="half">
+
+    <h2>Projects by language</h2>
+    <div *ngFor="let project of byLanguage">
+      <p>{{project.name}}</p>
+    </div>
+
+    <h2>Projects by framework</h2>
+    <div *ngFor="let project of byFramework">
+      <p>{{project.name}}</p>
+    </div>
+
+    <h2>Projects by tools</h2>
+    <div *ngFor="let project of byTools">
+      <p>{{project.name}}</p>
+    </div>
+
+    <h2>Projects by database</h2>
+    <div *ngFor="let project of byDatabase">
+      <p>{{project.name}}</p>
+    </div>
+  </div>
+
+
+</div>
