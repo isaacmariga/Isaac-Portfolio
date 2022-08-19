@@ -1,13 +1,109 @@
-<div class="container">
-  <div class="half">
-    <p>projects works!</p>
-    <h2>All Projects</h2>
-    <div *ngFor="let project of project">
-      <p>{{project.name}}</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1 class="projects-header">Projects</h1>
+
+  <div class="container-fluid">
+    <div class="allprojects-container">
+      <div *ngFor="let project of project">
+        <div id="box" class="box" (click)="open(mymodal)">
+          <img class="project-img" src="{{cloud}}{{project.image}}">
+          <div type="button" class="box-content">
+            <div class="box-text">
+              <span class="post">{{project.details}}</span>
+            </div>
+            <div class="building-blocks">
+
+              <div class="block">
+                <h5 class="block-title">Languages:</h5>
+                <ul class="block-items" *ngFor="let language of language">
+                  <li>{{language.language}}</li>
+                </ul>
+              </div>
+
+              <div class="block">
+                <h5 class="block-title">Frameworks:</h5>
+                <ul class="block-items" *ngFor="let framework of framework">
+                  <li>{{framework.framework}}</li>
+                </ul>
+              </div>
+
+
+            </div>
+          </div>
+          <ul class="icon">
+            <li><a href="#"><i class="fa fa-search"></i></a></li>
+            <li><a href="#"><i class="fa fa-link"></i></a></li>
+          </ul>
+        </div>
+        <!-- Modal -->
+
+        <div class="project-name">
+          <h3>{{project.name}}</h3>
+          <a href="rate/{{project.id}}">rate</a>
+
+        </div>
+
+        <ng-template #mymodal let-modal>
+          <div class=" modal-content">
+            <h4 class="modal-title m-piece">{{project.name}}</h4>
+            <div class="modal-cont-img">
+              <div class="modal-image m-piece">
+                <img class="modal-img project-img" src="{{cloud}}{{project.image}}">
+              </div>
+              <div class="modal-details m-piece">
+                <h3>Description</h3>
+                <p>{{project.details}}</p>
+              </div>
+            </div>
+            <div class="modal-tool m-piece">
+              <h4>Built with:</h4>
+              <div class="modal-tools">
+                <div class="block">
+                  <h5 class="block-title">Languages</h5>
+                  <div class="block-items" *ngFor="let language of language">
+                    <p>{{language.language}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Frameworks</h5>
+                  <div class="block-items" *ngFor="let framework of framework">
+                    <p>{{framework.framework}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Other tools</h5>
+                  <div class="block-items" *ngFor="let tools of tools">
+                    <p>{{tools.tool}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Database</h5>
+                  <div class="block-items" *ngFor="let database of database">
+                    <p>{{database.database}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </ng-template>
+      </div>
     </div>
 
     <h2>All Tools</h2>
-    <div *ngFor="let tools of tools">
+    <div *ngFor=" let tools of tools">
       <input type="radio" class="languages" value="{{tools.id}}" [(ngModel)]="selectedTool" (change)="projectsByTools()"
         class="btn-check " id="{{tools.tool}}">
       <label class="btn btn-warning languages-btn" for="{{tools.tool}}">{{tools.tool}}</label>
@@ -38,25 +134,371 @@
   <div class="half">
 
     <h2>Projects by language</h2>
-    <div *ngFor="let project of byLanguage">
-      <p>{{project.name}}</p>
+    <div class="allprojects-container">
+
+      <div *ngFor="let project of byLanguage">
+        <div id="box" class="box" (click)="open(mymodal)">
+          <img class="project-img" src="{{cloud}}{{project.image}}">
+          <div type="button" class="box-content">
+            <div class="box-text">
+              <span class="post">{{project.details}}</span>
+            </div>
+            <div class="building-blocks">
+
+              <div class="block">
+                <h5 class="block-title">Languages:</h5>
+                <ul class="block-items" *ngFor="let language of language">
+                  <li>{{language.language}}</li>
+                </ul>
+              </div>
+
+              <div class="block">
+                <h5 class="block-title">Frameworks:</h5>
+                <ul class="block-items" *ngFor="let framework of framework">
+                  <li>{{framework.framework}}</li>
+                </ul>
+              </div>
+
+
+            </div>
+          </div>
+          <ul class="icon">
+            <li><a href="#"><i class="fa fa-search"></i></a></li>
+            <li><a href="#"><i class="fa fa-link"></i></a></li>
+          </ul>
+        </div>
+        <!-- Modal -->
+
+        <div class="project-name">
+          <h3>{{project.name}}</h3>
+        </div>
+
+        <ng-template #mymodal let-modal>
+          <div class=" modal-content">
+            <h4 class="modal-title m-piece">{{project.name}}</h4>
+            <div class="modal-cont-img">
+              <div class="modal-image m-piece">
+                <img class="modal-img project-img" src="{{cloud}}{{project.image}}">
+              </div>
+              <div class="modal-details m-piece">
+                <h3>Description</h3>
+                <p>{{project.details}}</p>
+              </div>
+            </div>
+            <div class="modal-tool m-piece">
+              <h4>Built with:</h4>
+              <div class="modal-tools">
+                <div class="block">
+                  <h5 class="block-title">Languages</h5>
+                  <div class="block-items" *ngFor="let language of language">
+                    <p>{{language.language}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Frameworks</h5>
+                  <div class="block-items" *ngFor="let framework of framework">
+                    <p>{{framework.framework}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Other tools</h5>
+                  <div class="block-items" *ngFor="let tools of tools">
+                    <p>{{tools.tool}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Database</h5>
+                  <div class="block-items" *ngFor="let database of database">
+                    <p>{{database.database}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <h2>Projects by framework</h2>
+
+    <div class="allprojects-container">
+
+      <div *ngFor="let project of byFramework">
+        <div id="box" class="box" (click)="open(mymodal)">
+          <img class="project-img" src="{{cloud}}{{project.image}}">
+          <div type="button" class="box-content">
+            <div class="box-text">
+              <span class="post">{{project.details}}</span>
+            </div>
+            <div class="building-blocks">
+
+              <div class="block">
+                <h5 class="block-title">Languages:</h5>
+                <ul class="block-items" *ngFor="let language of language">
+                  <li>{{language.language}}</li>
+                </ul>
+              </div>
+
+              <div class="block">
+                <h5 class="block-title">Frameworks:</h5>
+                <ul class="block-items" *ngFor="let framework of framework">
+                  <li>{{framework.framework}}</li>
+                </ul>
+              </div>
+
+
+            </div>
+          </div>
+          <ul class="icon">
+            <li><a href="#"><i class="fa fa-search"></i></a></li>
+            <li><a href="#"><i class="fa fa-link"></i></a></li>
+          </ul>
+        </div>
+        <!-- Modal -->
+
+        <div class="project-name">
+          <h3>{{project.name}}</h3>
+        </div>
+
+        <ng-template #mymodal let-modal>
+          <div class=" modal-content">
+            <h4 class="modal-title m-piece">{{project.name}}</h4>
+            <div class="modal-cont-img">
+              <div class="modal-image m-piece">
+                <img class="modal-img project-img" src="{{cloud}}{{project.image}}">
+              </div>
+              <div class="modal-details m-piece">
+                <h3>Description</h3>
+                <p>{{project.details}}</p>
+              </div>
+            </div>
+            <div class="modal-tool m-piece">
+              <h4>Built with:</h4>
+              <div class="modal-tools">
+                <div class="block">
+                  <h5 class="block-title">Languages</h5>
+                  <div class="block-items" *ngFor="let language of language">
+                    <p>{{language.language}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Frameworks</h5>
+                  <div class="block-items" *ngFor="let framework of framework">
+                    <p>{{framework.framework}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Other tools</h5>
+                  <div class="block-items" *ngFor="let tools of tools">
+                    <p>{{tools.tool}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Database</h5>
+                  <div class="block-items" *ngFor="let database of database">
+                    <p>{{database.database}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </ng-template>
+      </div>
     </div>
 
-    <h2>Projects by framework</h2>
-    <div *ngFor="let project of byFramework">
-      <p>{{project.name}}</p>
-    </div>
 
     <h2>Projects by tools</h2>
-    <div *ngFor="let project of byTools">
-      <p>{{project.name}}</p>
-    </div>
 
+    <div class="allprojects-container">
+
+      <div *ngFor="let project of byTools">
+        <div id="box" class="box" (click)="open(mymodal)">
+          <img class="project-img" src="{{cloud}}{{project.image}}">
+          <div type="button" class="box-content">
+            <div class="box-text">
+              <span class="post">{{project.details}}</span>
+            </div>
+            <div class="building-blocks">
+
+              <div class="block">
+                <h5 class="block-title">Languages:</h5>
+                <ul class="block-items" *ngFor="let language of language">
+                  <li>{{language.language}}</li>
+                </ul>
+              </div>
+
+              <div class="block">
+                <h5 class="block-title">Frameworks:</h5>
+                <ul class="block-items" *ngFor="let framework of framework">
+                  <li>{{framework.framework}}</li>
+                </ul>
+              </div>
+
+
+            </div>
+          </div>
+          <ul class="icon">
+            <li><a href="#"><i class="fa fa-search"></i></a></li>
+            <li><a href="#"><i class="fa fa-link"></i></a></li>
+          </ul>
+        </div>
+        <!-- Modal -->
+
+        <div class="project-name">
+          <h3>{{project.name}}</h3>
+        </div>
+
+        <ng-template #mymodal let-modal>
+          <div class=" modal-content">
+            <h4 class="modal-title m-piece">{{project.name}}</h4>
+            <div class="modal-cont-img">
+              <div class="modal-image m-piece">
+                <img class="modal-img project-img" src="{{cloud}}{{project.image}}">
+              </div>
+              <div class="modal-details m-piece">
+                <h3>Description</h3>
+                <p>{{project.details}}</p>
+              </div>
+            </div>
+            <div class="modal-tool m-piece">
+              <h4>Built with:</h4>
+              <div class="modal-tools">
+                <div class="block">
+                  <h5 class="block-title">Languages</h5>
+                  <div class="block-items" *ngFor="let language of language">
+                    <p>{{language.language}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Frameworks</h5>
+                  <div class="block-items" *ngFor="let framework of framework">
+                    <p>{{framework.framework}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Other tools</h5>
+                  <div class="block-items" *ngFor="let tools of tools">
+                    <p>{{tools.tool}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Database</h5>
+                  <div class="block-items" *ngFor="let database of database">
+                    <p>{{database.database}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </ng-template>
+      </div>
+    </div>
     <h2>Projects by database</h2>
-    <div *ngFor="let project of byDatabase">
-      <p>{{project.name}}</p>
+
+    <div class="allprojects-container">
+
+      <div *ngFor="let project of byDatabase">
+        <div id="box" class="box" (click)="open(mymodal)">
+          <img class="project-img" src="{{cloud}}{{project.image}}">
+          <div type="button" class="box-content">
+            <div class="box-text">
+              <span class="post">{{project.details}}</span>
+            </div>
+            <div class="building-blocks">
+
+              <div class="block">
+                <h5 class="block-title">Languages:</h5>
+                <ul class="block-items" *ngFor="let language of language">
+                  <li>{{language.language}}</li>
+                </ul>
+              </div>
+
+              <div class="block">
+                <h5 class="block-title">Frameworks:</h5>
+                <ul class="block-items" *ngFor="let framework of framework">
+                  <li>{{framework.framework}}</li>
+                </ul>
+              </div>
+
+
+            </div>
+          </div>
+          <ul class="icon">
+            <li><a href="#"><i class="fa fa-search"></i></a></li>
+            <li><a href="#"><i class="fa fa-link"></i></a></li>
+          </ul>
+        </div>
+        <!-- Modal -->
+
+        <div class="project-name">
+          <h3>{{project.name}}</h3>
+        </div>
+
+        <ng-template #mymodal let-modal>
+          <div class=" modal-content">
+            <h4 class="modal-title m-piece">{{project.name}}</h4>
+            <div class="modal-cont-img">
+              <div class="modal-image m-piece">
+                <img class="modal-img project-img" src="{{cloud}}{{project.image}}">
+              </div>
+              <div class="modal-details m-piece">
+                <h3>Description</h3>
+                <p>{{project.details}}</p>
+              </div>
+            </div>
+            <div class="modal-tool m-piece">
+              <h4>Built with:</h4>
+              <div class="modal-tools">
+                <div class="block">
+                  <h5 class="block-title">Languages</h5>
+                  <div class="block-items" *ngFor="let language of language">
+                    <p>{{language.language}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Frameworks</h5>
+                  <div class="block-items" *ngFor="let framework of framework">
+                    <p>{{framework.framework}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Other tools</h5>
+                  <div class="block-items" *ngFor="let tools of tools">
+                    <p>{{tools.tool}}</p>
+                  </div>
+                </div>
+
+                <div class="block">
+                  <h5 class="block-title">Database</h5>
+                  <div class="block-items" *ngFor="let database of database">
+                    <p>{{database.database}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </ng-template>
+      </div>
     </div>
+
+
   </div>
+  <script src="project.js"></script>
 
+</body>
 
-</div>
+</html>

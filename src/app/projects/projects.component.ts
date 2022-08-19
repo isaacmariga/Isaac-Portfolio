@@ -16,6 +16,7 @@ import {
 } from '../api/projects';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-projects',
@@ -35,10 +36,13 @@ export class ProjectsComponent implements OnInit {
   // Selected in html
   selectedLanguage: string = '';
   selectedTool: string = '';
-  selectedDatabase: string = '1';
-  selectedFramework: string = '5';
+  selectedDatabase: string = '';
+  selectedFramework: string = '';
 
-  constructor(private httpClient: HttpClient) {}
+  // cloudinary
+  cloud: string = environment.cloudinary;
+
+  constructor(private httpClient: HttpClient, private modalService: NgbModal) {}
   ngOnInit(): void {
     this.getAllDatabases();
     this.getAllFrameworks();
@@ -50,6 +54,7 @@ export class ProjectsComponent implements OnInit {
     this.projectsByLanguage();
     this.projectsByTools();
   }
+
   getAllProjects() {
     this.httpClient
       .get<any>(environment.allProjectsApi)
@@ -84,7 +89,9 @@ export class ProjectsComponent implements OnInit {
       .subscribe((response) => {
         this.byDatabase = response;
       });
-    console.log(this.selectedDatabase);
+    this.selectedFramework = '10';
+
+    console.log(this.selectedFramework);
   }
 
   projectsByFramework() {
@@ -111,5 +118,40 @@ export class ProjectsComponent implements OnInit {
       .subscribe((response) => {
         this.byLanguage = response;
       });
+  }
+
+  // Modal
+
+  // displayStyle = 'none';
+
+  // openPopup() {
+  //   this.displayStyle = 'block';
+  // }
+  // closePopup() {
+  //   this.displayStyle = 'none';
+  // }
+  closeResult: string;
+
+  open(content) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }

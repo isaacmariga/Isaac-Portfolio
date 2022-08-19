@@ -1,6 +1,7 @@
 export class Projects {
   constructor(
-    public name: string,
+    public id: number,
+    name: string,
     details: string,
     language: number,
     framework: number,
