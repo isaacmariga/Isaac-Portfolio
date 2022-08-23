@@ -6,6 +6,9 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { trigger, transition, useAnimation } from '@angular/animations';
+
+import { flipInX, slideOutLeft } from 'ng-animate';
 
 import {
   Projects,
@@ -22,6 +25,15 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css'],
+  animations: [
+    trigger('flipInX', [
+      transition(
+        '* => *',
+        useAnimation(flipInX, { params: { timing: 0, delay: 0 } })
+      ),
+    ]),
+    trigger('slideOutLeft', [transition('* => *', useAnimation(slideOutLeft))]),
+  ],
 })
 export class ProjectsComponent implements OnInit {
   project: Projects[];
@@ -29,6 +41,7 @@ export class ProjectsComponent implements OnInit {
   byLanguage: Projects[];
   byDatabase: Projects[];
   byFramework: Projects[];
+
   tools: Tools[];
   language: Language[];
   database: Database[];
@@ -42,6 +55,10 @@ export class ProjectsComponent implements OnInit {
   // cloudinary
   cloud: string = environment.cloudinary;
 
+  // Animation
+  flipInX: any;
+  slideOutLeft: any;
+
   constructor(private httpClient: HttpClient, private modalService: NgbModal) {}
   ngOnInit(): void {
     this.getAllDatabases();
@@ -54,6 +71,9 @@ export class ProjectsComponent implements OnInit {
     this.projectsByLanguage();
     this.projectsByTools();
   }
+  @Output()
+  selectedChanged: EventEmitter<string> = new EventEmitter<string>();
+  onSelectedChanged() {}
 
   getAllProjects() {
     this.httpClient
@@ -89,9 +109,6 @@ export class ProjectsComponent implements OnInit {
       .subscribe((response) => {
         this.byDatabase = response;
       });
-    this.selectedFramework = '10';
-
-    console.log(this.selectedFramework);
   }
 
   projectsByFramework() {
@@ -100,7 +117,6 @@ export class ProjectsComponent implements OnInit {
       .subscribe((response) => {
         this.byFramework = response;
       });
-    console.log(this.selectedFramework);
   }
 
   projectsByTools() {
@@ -109,7 +125,6 @@ export class ProjectsComponent implements OnInit {
       .subscribe((response) => {
         this.byTools = response;
       });
-    console.log(this.selectedTool);
   }
 
   projectsByLanguage() {
@@ -120,16 +135,6 @@ export class ProjectsComponent implements OnInit {
       });
   }
 
-  // Modal
-
-  // displayStyle = 'none';
-
-  // openPopup() {
-  //   this.displayStyle = 'block';
-  // }
-  // closePopup() {
-  //   this.displayStyle = 'none';
-  // }
   closeResult: string;
 
   open(content) {
@@ -153,5 +158,35 @@ export class ProjectsComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  langShow = false;
+  dbShow = false;
+  frameShow = false;
+  toolShow = false;
+  AllShow = true;
+
+  togglelanguage() {
+    this.langShow = true;
+    this.frameShow = false;
+    this.toolShow = false;
+    this.dbShow = false;
+    this.AllShow = false;
+  }
+
+  toggleframework() {
+    this.langShow = false;
+    this.frameShow = true;
+    this.toolShow = false;
+    this.dbShow = false;
+    this.AllShow = false;
+  }
+
+  toggleAll() {
+    this.langShow = false;
+    this.frameShow = false;
+    this.toolShow = false;
+    this.dbShow = false;
+    this.AllShow = true;
   }
 }

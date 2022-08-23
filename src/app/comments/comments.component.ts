@@ -11,11 +11,16 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Projects } from '../api/projects';
+import { flipInX, slideInRight } from 'ng-animate';
+import { trigger, transition, useAnimation } from '@angular/animations';
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css'],
+  animations: [
+    trigger('slideInRight', [transition('* => *', useAnimation(slideInRight))]),
+  ],
 })
 export class CommentsComponent implements OnInit {
   data = [];
@@ -23,6 +28,7 @@ export class CommentsComponent implements OnInit {
   url = environment.allComments;
   id = '';
   project: Projects;
+  slideInRight: any;
 
   myForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -45,6 +51,7 @@ export class CommentsComponent implements OnInit {
     this.myForm.patchValue({
       project: this.id,
     });
+    this.slideInRight;
   }
 
   getText(data: any) {

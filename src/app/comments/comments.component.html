@@ -9,54 +9,64 @@
 </head>
 
 <body>
-  <div class="container">
 
-    <form novalidate [formGroup]="myForm" #testForm="ngForm" (ngSubmit)="getText(testForm.value)">
-      <div class=" form-group">
+  <a href="#">
+    <span>Button</span>
+    <div class="liquid"></div>
+  </a>
 
-        <label>Name</label>
-        <input type="text" class="form-control" formControlName="name">
-      </div>
-      <div style="color: red;" *ngIf="myForm.controls.name.invalid && myForm.controls.name.dirty">Kindly input
-        your email </div>
+  <div [@slideInRight]="slideInRight" class="container">
+    <div class="half2"> </div>
 
-      <label>email</label>
-      <input type="email" class="form-control" formControlName="email">
-      <div style="color: red;" *ngIf="myForm.controls.email.invalid && myForm.controls.email.dirty">Kindly
-        input a picture of the medicine</div>
+    <div class="half">
 
-      <label>comment</label>
-      <input type="text" class="form-control" formControlName="comment">
-      <div style="color: red;" *ngIf="myForm.controls.comment.invalid && myForm.controls.comment.dirty">Kindly input the
-        disease</div>
+      <form novalidate [formGroup]="myForm" #testForm="ngForm" (ngSubmit)="getText(testForm.value)">
+        <div class=" form-group">
 
-      <label>Design Rating</label><br>
-      <ngb-rating [max]="5" type="number" class="review" formControlName="design_rating">
-        <ng-template let-fill="fill" let-index="index">
-          <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
-        </ng-template>
-      </ngb-rating><br>
-      <label>User Experience Rating</label><br>
-      <ngb-rating [max]="5" named="user" type="number" class="review" formControlName="user_rating">
-        <ng-template let-fill="fill" let-index="index">
-          <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
-        </ng-template>
-      </ngb-rating><br>
-      <label>Content Rating</label><br>
-      <ngb-rating [max]="5" type="number" class="review" formControlName="content_rating">
-        <ng-template let-fill="fill" let-index="index">
-          <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
-        </ng-template>
-      </ngb-rating>
+          <label>Name</label>
+          <input type="text" class="form-control" formControlName="name">
+        </div>
+        <div style="color: red;" *ngIf="myForm.controls.name.invalid && myForm.controls.name.dirty">Kindly input
+          your email </div>
+
+        <label>email</label>
+        <input type="email" class="form-control" formControlName="email">
+        <div style="color: red;" *ngIf="myForm.controls.email.invalid && myForm.controls.email.dirty">Kindly
+          input a picture of the medicine</div>
+
+        <label>comment</label>
+        <textarea type="text" class="form-control" rows="10" formControlName="comment"></textarea>
+        <div style="color: red;" *ngIf="myForm.controls.comment.invalid && myForm.controls.comment.dirty">Kindly input
+          the
+          disease</div>
+
+        <label>Design Rating</label><br>
+        <ngb-rating [max]="5" type="number" class="review" formControlName="design_rating">
+          <ng-template let-fill="fill" let-index="index">
+            <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+          </ng-template>
+        </ngb-rating><br>
+        <label>User Experience Rating</label><br>
+        <ngb-rating [max]="5" named="user" type="number" class="review" formControlName="user_rating">
+          <ng-template let-fill="fill" let-index="index">
+            <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+          </ng-template>
+        </ngb-rating><br>
+        <label>Content Rating</label><br>
+        <ngb-rating [max]="5" type="number" class="review" formControlName="content_rating">
+          <ng-template let-fill="fill" let-index="index">
+            <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+          </ng-template>
+        </ngb-rating>
 
 
-      <!-- <pre>{{myForm.value | json}}</pre> -->
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+        <!-- <pre>{{myForm.value | json}}</pre> -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
 
 
+    </div>
   </div>
-
 
 </body>
 

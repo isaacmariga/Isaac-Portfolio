@@ -9,3 +9,9 @@
 .rating {
   padding: 5px;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}

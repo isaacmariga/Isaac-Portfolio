@@ -15,6 +15,10 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ProjectsapiService } from './services/projectsapi.service';
 import { TestingComponent } from './testing/testing.component';
 import { CommentsComponent } from './comments/comments.component';
+import { bounceIn } from 'ng-animate/lib/bouncing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxHideOnScrollModule } from 'ngx-hide-on-scroll';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +37,9 @@ import { CommentsComponent } from './comments/comments.component';
     RouterModule,
     ReactiveFormsModule,
     NgbModule,
+    NgxHideOnScrollModule,
+    BrowserAnimationsModule,
+    
   ],
   providers: [ProjectsapiService],
   bootstrap: [AppComponent],
