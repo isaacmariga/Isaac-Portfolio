@@ -16,26 +16,26 @@
   <div class="container-fluid">
 
 
-    <div id="projects" class="menu-container">
+    <div id="projects" class="menu-cont">
 
       <h4 class="menu-header">Sort By:</h4>
       <div class="menu">
         <div class="menu-item">
-          <h4 class="menu-title">All</h4>
+          <h5 class="menu-title">All</h5>
           <button (click)=toggleAll() class="btn">All</button>
         </div>
         <div class="menu-item">
-          <h4 class="menu-title">Language</h4>
+          <h5 (click)="togglelanguageList()" class="menu-title">Language</h5>
           <div *ngFor="let language of language">
-            <input name="{{language.id}}" type="radio" class="languages" value="{{language.id}}"
-              [(ngModel)]="selectedLanguage" (change)="projectsByLanguage()" (change)="togglelanguage()"
-              class="btn-check" id="{{language.id}}">
+            <input [class.languages]="!langList" name="{{language.id}}" type="radio" class="languages"
+              value="{{language.id}}" [(ngModel)]="selectedLanguage" (change)="projectsByLanguage()"
+              (change)="togglelanguage()" class="btn-check" id="{{language.id}}">
 
             <label class="btn" for="{{language.id}}">{{language.language}}</label>
           </div>
         </div>
         <div class="menu-item">
-          <h4 class="menu-title">Framework</h4>
+          <h5 class="menu-title">Framework</h5>
           <div *ngFor="let framework of framework">
             <input name="{{framework.framework}}" type="radio" class="framework" value="{{framework.id}}"
               [(ngModel)]="selectedFramework" (change)="projectsByFramework()" (change)="toggleframework()"
@@ -53,7 +53,7 @@
         <h1 class="projects-header">All Projects</h1>
         <div class="allprojects-container">
           <div *ngFor="let project of project">
-            <div id="box" class="box" (click)="open(mymodal)">
+            <div [@flipInX]="flipInX" id="box" class="box" (click)="open(mymodal)">
               <img class="project-img" src="{{cloud}}{{project.image}}">
               <div type="button" class="box-content">
                 <div class="box-text">
@@ -235,7 +235,6 @@
 
             <div class="project-name">
               <h3>{{project.name}}</h3>
-              <a routerLink="/rate/{{project.id}}">rate</a>
 
             </div>
 
@@ -360,7 +359,6 @@
 
             <div class="project-name">
               <h3>{{project.name}}</h3>
-              <a routerLink="/rate/{{project.id}}">rate</a>
 
             </div>
 

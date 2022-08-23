@@ -29,7 +29,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
     trigger('flipInX', [
       transition(
         '* => *',
-        useAnimation(flipInX, { params: { timing: 0, delay: 0 } })
+        useAnimation(flipInX, { params: { timing: 1, delay: 0 } })
       ),
     ]),
     trigger('slideOutLeft', [transition('* => *', useAnimation(slideOutLeft))]),
@@ -165,6 +165,8 @@ export class ProjectsComponent implements OnInit {
   frameShow = false;
   toolShow = false;
   AllShow = true;
+  langList = false;
+  frameList = false;
 
   togglelanguage() {
     this.langShow = true;
@@ -188,5 +190,9 @@ export class ProjectsComponent implements OnInit {
     this.toolShow = false;
     this.dbShow = false;
     this.AllShow = true;
+  }
+
+  togglelanguageList() {
+    this.langList = !this.langList;
   }
 }
