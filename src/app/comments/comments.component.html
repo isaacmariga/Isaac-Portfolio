@@ -10,15 +10,59 @@
 
 <body>
 
-  <a href="#">
-    <span>Button</span>
-    <div class="liquid"></div>
-  </a>
-
-  <div [@slideInRight]="slideInRight" class="container">
-    <div class="half2"> </div>
+  <div class="container">
 
     <div class="half">
+
+
+      <div class="text">
+        <p>Kindly rate the site in order to help improve it further.<br><br>
+          <strong>Kindly follow the "live link" button below to go to the site and explore if you are yet
+            to.</strong><br><br>
+        </p>
+        <li> You can rate it based on the design, The User Experience and the Content.</li><br>
+        <li> You can also leave a comment on which parts of the site you liked and which ones you feel could use some
+          improvement, and i will work on getting them to perfect quality as well as take your comments into
+          consideration
+          on future projects.</li><br>
+        <li> If you wish you can leave your email address and I can let you know when your suggestions have been
+          implemented
+          either on the current or a future project.</li>
+
+        <br>
+        <br>
+        Thank you in advance for your feedback
+      </div>
+      <div class="image-container">
+        <img class="image" src="assets/images/comp1.jpg" alt="image">
+      </div>
+      <div class="buttons">
+        <a href="#about">
+          <h5 class="btn">Live site</h5>
+        </a>
+        <a href="">
+          <h5 class="btn">Github</h5>
+        </a>
+        <a href="#projects">
+          <h5 class="btn">All Projects</h5>
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="half2">
+      <div class="form-title">
+        <h1>Kindly rate the site</h1>
+      </div>
+      <div class="block-items" *ngFor="let project of project">
+
+        <h1>{{project.name}}
+
+        </h1>
+
+      </div>
 
       <form novalidate [formGroup]="myForm" #testForm="ngForm" (ngSubmit)="getText(testForm.value)">
         <div class=" form-group">
@@ -27,18 +71,14 @@
           <input type="text" class="form-control" formControlName="name">
         </div>
         <div style="color: red;" *ngIf="myForm.controls.name.invalid && myForm.controls.name.dirty">Kindly input
-          your email </div>
+          your Name </div>
 
-        <label>email</label>
-        <input type="email" class="form-control" formControlName="email">
-        <div style="color: red;" *ngIf="myForm.controls.email.invalid && myForm.controls.email.dirty">Kindly
-          input a picture of the medicine</div>
-
-        <label>comment</label>
+        <label>Email</label>
+        <input type="email" placeholder="(Optional)" class="form-control" formControlName="email">
+        <label>Comment</label>
         <textarea type="text" class="form-control" rows="10" formControlName="comment"></textarea>
         <div style="color: red;" *ngIf="myForm.controls.comment.invalid && myForm.controls.comment.dirty">Kindly input
-          the
-          disease</div>
+          a comment</div>
 
         <label>Design Rating</label><br>
         <ngb-rating [max]="5" type="number" class="review" formControlName="design_rating">

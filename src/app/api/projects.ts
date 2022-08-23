@@ -1,13 +1,15 @@
 export class Projects {
   constructor(
     public id: number,
-    name: string,
-    details: string,
-    language: number,
-    framework: number,
-    tools: number,
-    database: number,
-    image: string
+    public name: string,
+    public details: string,
+    public language: number,
+    public framework: number,
+    public tools: number,
+    public database: number,
+    public image: string,
+    public link: string,
+    public github: string
   ) {}
 }
 export class Tools {

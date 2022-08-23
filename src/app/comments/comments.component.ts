@@ -28,11 +28,13 @@ export class CommentsComponent implements OnInit {
   url = environment.allComments;
   id = '';
   project: Projects;
+  project1: Projects;
   slideInRight: any;
+  byId = '';
 
   myForm = new FormGroup({
     name: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
+    email: new FormControl(''),
     comment: new FormControl('', Validators.required),
     design_rating: new FormControl(0, Validators.required),
     user_rating: new FormControl(0, Validators.required),
@@ -51,7 +53,7 @@ export class CommentsComponent implements OnInit {
     this.myForm.patchValue({
       project: this.id,
     });
-    this.slideInRight;
+    this.projectsById();
   }
 
   getText(data: any) {
@@ -74,5 +76,16 @@ export class CommentsComponent implements OnInit {
     } else {
       this.ctrl.disable();
     }
+  }
+
+  projectsById() {
+    this.id = this.route.snapshot.params.id;
+
+    this.http
+      .get<any>(environment.projectsById + this.id)
+      .subscribe((response) => {
+        this.byId = response;
+      });
+    console.log('id' + this.id);
   }
 }
