@@ -30,7 +30,10 @@ export class CommentsComponent implements OnInit {
   project: Projects;
   project1: Projects;
   slideInRight: any;
-  byId = '';
+  byId: Projects;
+
+  // cloudinary
+  cloud: string = environment.cloudinary;
 
   myForm = new FormGroup({
     name: new FormControl('', Validators.required),

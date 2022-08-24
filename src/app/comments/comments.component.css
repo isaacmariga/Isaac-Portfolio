@@ -70,7 +70,7 @@ li:before {
 }
 .image {
   width: 35vw;
-  border-radius: 10px;
+  border-radius: 0px 40px;
   box-shadow: 10px 10px 8px rgb(178, 178, 178);
 }
 
