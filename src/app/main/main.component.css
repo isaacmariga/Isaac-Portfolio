@@ -75,11 +75,11 @@ h6 {
 .heading-text {
   display: grid;
   place-items: center;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 3fr;
   gap: 5vw;
   height: 100%;
-  width: 75vw;
-  margin-right: 7vw;
+  width: 67vw;
+  margin-right: 17vw;
 }
 .heading-img2 {
   width: 15vw;
