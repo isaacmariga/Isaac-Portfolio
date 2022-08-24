@@ -167,6 +167,7 @@ export class ProjectsComponent implements OnInit {
   AllShow = true;
   langList = false;
   frameList = false;
+  dropdownCollapsed = false;
 
   togglelanguage() {
     this.langShow = true;
@@ -194,5 +195,9 @@ export class ProjectsComponent implements OnInit {
 
   togglelanguageList() {
     this.langList = !this.langList;
+  }
+
+  showDropdown() {
+    this.dropdownCollapsed = !this.dropdownCollapsed;
   }
 }

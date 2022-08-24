@@ -9,10 +9,6 @@
 </head>
 
 <body>
-
-
-
-
   <div class="container-fluid">
 
 
@@ -25,21 +21,21 @@
           <button (click)=toggleAll() class="btn">All</button>
         </div>
         <div class="menu-item">
-          <h5 (click)="togglelanguageList()" class="menu-title">Language</h5>
+          <button (mouseenter)="showDropdown()" class="menu-title">Language</button>
           <div *ngFor="let language of language">
-            <input [class.languages]="!langList" name="{{language.id}}" type="radio" class="languages"
-              value="{{language.id}}" [(ngModel)]="selectedLanguage" (change)="projectsByLanguage()"
-              (change)="togglelanguage()" class="btn-check" id="{{language.id}}">
+            <input name="{{language.id}}" type="radio" class="languages" value="{{language.id}}"
+              [(ngModel)]="selectedLanguage" (change)="projectsByLanguage()" (change)="togglelanguage()"
+              class="btn-check" id="{{language.id}}">
 
-            <label class="btn" for="{{language.id}}">{{language.language}}</label>
+            <label class="btn" for="{{language.id}}" [class.languages]="dropdownCollapsed">{{language.language}}</label>
           </div>
         </div>
         <div class="menu-item">
           <h5 class="menu-title">Framework</h5>
           <div *ngFor="let framework of framework">
             <input name="{{framework.framework}}" type="radio" class="framework" value="{{framework.id}}"
-              [(ngModel)]="selectedFramework" (change)="projectsByFramework()" (change)="toggleframework()"
-              class="btn-check " id="{{framework.framework}}">
+              (change)="projectsByFramework()" (change)="toggleframework()" class="btn-check "
+              id="{{framework.framework}}">
             <label class="btn" for="{{framework.framework}}">{{framework.framework}}</label>
           </div>
         </div>
@@ -134,7 +130,7 @@
                       </li>
                       <li class="icons twitter">
                         <span class="tooltip">Rate Project</span>
-                        <a routerLink="/rate/{{project.id}}">
+                        <a (click)="modal.dismiss('Cross click')" routerLink="/rate/{{project.id}}">
                           <span><img src="assets/images/star2.png" class="fab fa-twitter"></span></a>
                       </li>
 
@@ -174,13 +170,12 @@
                     </div>
                   </div>
                 </div>
-
-
               </div>
             </ng-template>
           </div>
         </div>
       </div>
+
       <div *ngIf="langShow" class="allprojects-title">
         <h5>Projects by language</h5>
         <div class="allprojects-container">
@@ -261,7 +256,7 @@
                       </li>
                       <li class="icons twitter">
                         <span class="tooltip">Rate Project</span>
-                        <a routerLink="/rate/{{project.id}}">
+                        <a (click)="modal.dismiss('Cross click')" routerLink="/rate/{{project.id}}">
                           <span><img src="assets/images/star2.png" class="fab fa-twitter"></span></a>
                       </li>
 
@@ -385,7 +380,7 @@
                       </li>
                       <li class="icons twitter">
                         <span class="tooltip">Rate Project</span>
-                        <a routerLink="/rate/{{project.id}}">
+                        <a (click)="modal.dismiss('Cross click')" routerLink="/rate/{{project.id}}">
                           <span><img src="assets/images/star2.png" class="fab fa-twitter"></span></a>
                       </li>
 
