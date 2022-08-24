@@ -100472,6 +100472,243 @@ NgbModule.ɵinj = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵ�
 
 /***/ }),
 
+/***/ 8723:
+/*!**********************************************************************************!*\
+  !*** ./node_modules/mdb-angular-ui-kit/fesm2020/mdb-angular-ui-kit-collapse.mjs ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MdbCollapseDirective": () => (/* binding */ MdbCollapseDirective),
+/* harmony export */   "MdbCollapseModule": () => (/* binding */ MdbCollapseModule)
+/* harmony export */ });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 6312);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ 3910);
+
+
+
+
+const TRANSITION_TIME = 350; // eslint-disable-next-line @angular-eslint/component-class-suffix
+
+class MdbCollapseDirective {
+  constructor(_elementRef, _renderer) {
+    this._elementRef = _elementRef;
+    this._renderer = _renderer;
+    this.collapseClass = true;
+    this.collapseShow = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.collapseShown = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.collapseHide = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.collapseHidden = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this._collapsed = true;
+    this._isTransitioning = false;
+  }
+
+  set collapsed(collapsed) {
+    if (collapsed !== this._collapsed) {
+      collapsed ? this.hide() : this.show();
+      this._collapsed = collapsed;
+    }
+  }
+
+  get collapsed() {
+    return this._collapsed;
+  }
+
+  get host() {
+    return this._elementRef.nativeElement;
+  }
+
+  show() {
+    if (this._isTransitioning || !this.collapsed) {
+      return;
+    }
+
+    this.collapseShow.emit(this);
+
+    this._renderer.removeClass(this.host, 'collapse');
+
+    this._renderer.addClass(this.host, 'collapsing');
+
+    this._renderer.setStyle(this.host, 'height', '0px');
+
+    this._isTransitioning = true;
+    const scrollHeight = this.host.scrollHeight;
+    (0,rxjs__WEBPACK_IMPORTED_MODULE_1__.fromEvent)(this.host, 'transitionend').pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).subscribe(() => {
+      this._isTransitioning = false;
+      this.collapsed = false;
+
+      this._renderer.removeClass(this.host, 'collapsing');
+
+      this._renderer.addClass(this.host, 'collapse');
+
+      this._renderer.addClass(this.host, 'show');
+
+      this._renderer.removeStyle(this.host, 'height');
+
+      this.collapseShown.emit(this);
+    });
+
+    this._emulateTransitionEnd(this.host, TRANSITION_TIME);
+
+    this._renderer.setStyle(this.host, 'height', `${scrollHeight}px`);
+  }
+
+  hide() {
+    if (this._isTransitioning || this.collapsed) {
+      return;
+    }
+
+    this.collapseHide.emit(this);
+    const hostHeight = this.host.getBoundingClientRect().height;
+
+    this._renderer.setStyle(this.host, 'height', `${hostHeight}px`);
+
+    this._reflow(this.host);
+
+    this._renderer.addClass(this.host, 'collapsing');
+
+    this._renderer.removeClass(this.host, 'collapse');
+
+    this._renderer.removeClass(this.host, 'show');
+
+    this._isTransitioning = true;
+    (0,rxjs__WEBPACK_IMPORTED_MODULE_1__.fromEvent)(this.host, 'transitionend').pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).subscribe(() => {
+      this._renderer.removeClass(this.host, 'collapsing');
+
+      this._renderer.addClass(this.host, 'collapse');
+
+      this._isTransitioning = false;
+      this.collapsed = true;
+      this.collapseHidden.emit(this);
+    });
+
+    this._renderer.removeStyle(this.host, 'height');
+
+    this._emulateTransitionEnd(this.host, TRANSITION_TIME);
+  }
+
+  toggle() {
+    if (this._isTransitioning) {
+      return;
+    }
+
+    this.collapsed = !this.collapsed;
+    this.collapsed ? this.hide() : this.show();
+  }
+
+  _reflow(element) {
+    return element.offsetHeight;
+  }
+
+  _emulateTransitionEnd(element, duration) {
+    let eventEmitted = false;
+    const durationPadding = 5;
+    const emulatedDuration = duration + durationPadding;
+    (0,rxjs__WEBPACK_IMPORTED_MODULE_1__.fromEvent)(element, 'transitionend').pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).subscribe(() => {
+      eventEmitted = true;
+    });
+    setTimeout(() => {
+      if (!eventEmitted) {
+        element.dispatchEvent(new Event('transitionend'));
+      }
+    }, emulatedDuration);
+  }
+
+}
+
+MdbCollapseDirective.ɵfac = function MdbCollapseDirective_Factory(t) {
+  return new (t || MdbCollapseDirective)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__.Renderer2));
+};
+
+MdbCollapseDirective.ɵdir = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+  type: MdbCollapseDirective,
+  selectors: [["", "mdbCollapse", ""]],
+  hostVars: 2,
+  hostBindings: function MdbCollapseDirective_HostBindings(rf, ctx) {
+    if (rf & 2) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("collapse", ctx.collapseClass);
+    }
+  },
+  inputs: {
+    collapsed: "collapsed"
+  },
+  outputs: {
+    collapseShow: "collapseShow",
+    collapseShown: "collapseShown",
+    collapseHide: "collapseHide",
+    collapseHidden: "collapseHidden"
+  },
+  exportAs: ["mdbCollapse"]
+});
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MdbCollapseDirective, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Directive,
+    args: [{
+      // eslint-disable-next-line @angular-eslint/directive-selector
+      selector: '[mdbCollapse]',
+      exportAs: 'mdbCollapse'
+    }]
+  }], function () {
+    return [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef
+    }, {
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Renderer2
+    }];
+  }, {
+    collapseClass: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.HostBinding,
+      args: ['class.collapse']
+    }],
+    collapseShow: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    collapseShown: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    collapseHide: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    collapseHidden: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    collapsed: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }]
+  });
+})();
+
+class MdbCollapseModule {}
+
+MdbCollapseModule.ɵfac = function MdbCollapseModule_Factory(t) {
+  return new (t || MdbCollapseModule)();
+};
+
+MdbCollapseModule.ɵmod = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
+  type: MdbCollapseModule
+});
+MdbCollapseModule.ɵinj = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({});
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MdbCollapseModule, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.NgModule,
+    args: [{
+      declarations: [MdbCollapseDirective],
+      exports: [MdbCollapseDirective]
+    }]
+  }], null, null);
+})();
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+
+
+/***/ }),
+
 /***/ 1921:
 /*!*********************************************************!*\
   !*** ./node_modules/ng-animate/fesm2020/ng-animate.mjs ***!
