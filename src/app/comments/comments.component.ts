@@ -86,6 +86,6 @@ export class CommentsComponent implements OnInit {
       .subscribe((response) => {
         this.byId = response;
       });
-    console.log('id' + this.id);
+    console.log(environment.projectsById + this.id);
   }
 }

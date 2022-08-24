@@ -167,7 +167,9 @@ export class ProjectsComponent implements OnInit {
   AllShow = true;
   langList = false;
   frameList = false;
-  dropdownCollapsed = false;
+  showLangList = false;
+  showFrameList = false;
+  showAllList = false;
 
   togglelanguage() {
     this.langShow = true;
@@ -193,11 +195,19 @@ export class ProjectsComponent implements OnInit {
     this.AllShow = true;
   }
 
-  togglelanguageList() {
-    this.langList = !this.langList;
+  toggleLangList() {
+    this.showLangList = !this.showLangList;
+    this.showFrameList = false;
+    this.showAllList = false;
   }
-
-  showDropdown() {
-    this.dropdownCollapsed = !this.dropdownCollapsed;
+  toggleFrameList() {
+    this.showLangList = false;
+    this.showFrameList = !this.showFrameList;
+    this.showAllList = false;
+  }
+  toggleAllList() {
+    this.showLangList = false;
+    this.showFrameList = false;
+    this.showAllList = !this.showAllList;
   }
 }
