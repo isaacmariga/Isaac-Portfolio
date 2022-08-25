@@ -14,7 +14,7 @@ A website showcasing the projects I have worked on, where people can view them a
 
 ## Site
 
-You can view the site **[here.](https://isaacmariga.github.io/Isaac-Portfolio/)**
+You can view the site **[here.](https://isaacmariga.github.io/Mariga-Portfolio/)**
 
 ## Technologies Used
 
