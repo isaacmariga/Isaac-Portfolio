@@ -1485,21 +1485,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "environment": () => (/* binding */ environment)
 /* harmony export */ });
 // This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const environment = {
-    production: false,
-    allProjectsApi: 'https://marigaportfolio.herokuapp.com/api/all_projects/',
-    allDb: 'https://marigaportfolio.herokuapp.com/api/all_databases/',
-    allTools: 'https://marigaportfolio.herokuapp.com/api/all_tools/',
-    allFramework: 'https://marigaportfolio.herokuapp.com/api/all_frameworks/',
-    allLanguage: 'https://marigaportfolio.herokuapp.com/api/all_languages/',
+    production: true,
+    allProjectsApi: 'https://marigaportfolio.herokuapp.com/api/all_projects',
+    allTools: 'https://marigaportfolio.herokuapp.com/api/all_tools',
+    allLanguage: 'https://marigaportfolio.herokuapp.com/api/all_languages',
+    allDb: 'https://marigaportfolio.herokuapp.com/api/all_databases',
+    allFramework: 'https://marigaportfolio.herokuapp.com/api/all_frameworks',
     allComments: 'https://marigaportfolio.herokuapp.com/api/all_comments/',
     projectsByDb: 'https://marigaportfolio.herokuapp.com/api/database_projects/',
-    projectsByTools: 'https://marigaportfolio.herokuapp.com/api/tools_projects/',
     projectsByFramework: 'https://marigaportfolio.herokuapp.com/api/framework_projects/',
+    projectsByTools: 'https://marigaportfolio.herokuapp.com/api/tools_projects/',
     projectsByLanguage: 'https://marigaportfolio.herokuapp.com/api/languages_projects/',
     projectsById: 'https://marigaportfolio.herokuapp.com/api/id_projects/',
+    // cloudinary
     cloudinary: 'https://res.cloudinary.com/dtj7bnapz/',
 };
 /*
