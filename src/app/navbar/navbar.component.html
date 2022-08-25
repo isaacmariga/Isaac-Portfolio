@@ -9,42 +9,58 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light " ngxHideOnScroll [classNameWhenHidden]="'nav--hidden'">
+
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg" ngxHideOnScroll [classNameWhenHidden]="'nav--hidden'">
+    <!-- Container wrapper -->
     <div class="container-fluid">
-      <img class="navbar-img" src="assets/images/logo.png" alt="">
-      <a class="navbar-brand" href="#">Mariga's Portfolio</a>
-      <button class="navbar-toggler" type="button" (click)="toggleNavbarCollapsing()" data-bs-toggle=" collapse"
-        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      <!-- Navbar brand -->
+      <a href=""><img src="assets/images/logo.png" alt=""></a>
+
+      <!-- Toggle button -->
+      <div class="navbar-toggler" type="button" (click)="basicNavbar.toggle()" aria-expanded="false"
         aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse" ngxHideOnScroll [classNameWhenHidden]="'collapse--hidden'"
-        [class.collapse]="!navbarCollapsed" id="navbarSupportedContent">
-        <ul class="navbar-nav">
+        <img class="toggle-img" src="assets/images/menu.png" alt="">
+      </div>
+
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" mdbCollapse #basicNavbar="mdbCollapse">
+        <!-- Left links -->
+        <ul class="navbar-nav d-flex  w-auto  me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#about">About Me</a>
-          </li>
-          <li class="nav-item dropdown" (mouseenter)="showDropdown()" (mouseleave)="hideDropdown()">
-            <a class="nav-link " href="#projects" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Projects
-            </a>
+            <a class="nav-link active" aria-current="page" href="#">Mariga's Portfolio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" tabindex="-1">Resume</a>
+            <a class="nav-link " aria-current="page" href="#about">About Me</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" tabindex="-1">Linked-In</a>
+            <a class="nav-link " href="#projects" tabindex="-1">Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" tabindex="-1">Github</a>
+            <a class="nav-link" target="blank"
+              href="https://drive.google.com/file/d/1Nb3V3mWSJbd-NC6MjJRG5pUEFDY9Fubx/view?usp=sharing"
+              tabindex="-1">Resume</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" target="blank" href="https://www.linkedin.com/in/isaacwangombe/"
+              tabindex="-1">Linked-In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" target="blank" href="https://github.com/isaacmariga" tabindex="-1">Github</a>
+          </li>
+
         </ul>
+        <!-- Left links -->
+
+        <!-- Search form -->
 
       </div>
+      <!-- Collapsible wrapper -->
     </div>
+    <!-- Container wrapper -->
   </nav>
-
+  <!-- Navbar -->
 
 </body>
 

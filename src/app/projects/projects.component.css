@@ -21,8 +21,12 @@ h1 {
 h3 {}
 h4 {} */
 
+h4 {
+  font-size: min(2rem, 3.5vw);
+}
+
 h3 {
-  font-size: 40px;
+  font-size: min(4rem, 8vw);
   font-family: "Playfair Display", serif;
 }
 
@@ -44,21 +48,20 @@ h6 {
   grid-template-rows: 3fr 1fr;
 }
 
-.menu-title {
-  padding: 25px 0px 5px 10px;
-}
-
-.menu-container {
+.menu-cont {
   position: sticky;
   top: 0;
   left: 10;
-  padding-top: 120px;
-  margin-left: 5vw;
+  padding-top: 60px;
   z-index: 5;
-  max-width: 80vw;
-  max-height: 800px;
+  max-width: 90vw;
+  max-height: 850px;
   display: grid;
   place-items: start center;
+}
+.input-container {
+  display: grid;
+  place-items: center;
 }
 .half {
   padding-top: 50px;
@@ -71,14 +74,21 @@ h6 {
   grid-column: 2;
 }
 @media screen and (max-width: 992px) {
+  body {
+    padding-top: 0px;
+  }
   .container-fluid {
+    padding-top: 0px;
     display: grid;
-    grid-template-rows: 1fr 5fr;
+    grid-template-rows: 1fr 20fr;
     max-width: 100vw;
   }
-  .menu-container {
+  .menu-cont {
+    padding-top: calc(10vw + 23px);
     background-color: #f4ebd9;
     width: 120vw;
+    height: calc(20vw + 60px);
+    box-shadow: 0 4px 15px 0 #f4ebd9;
   }
   .menu {
     display: flex;
@@ -98,15 +108,25 @@ h6 {
 }
 .allprojects-title {
   display: grid;
-  place-items: center;
+  place-content: center;
   max-width: 100vw;
+}
+.projects-header {
+  display: grid;
+  place-content: center;
 }
 .allprojects-container {
   display: grid;
   gap: 3rem;
-  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 2fr));
   padding: 5vw;
   max-width: 70vw;
+}
+
+@media screen and (max-width: 420px) {
+  .allprojects-container {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 2fr));
+  }
 }
 
 .building-blocks {
@@ -402,7 +422,7 @@ li {
 }
 @media screen and (max-width: 574px) {
   .modal-content {
-    width: 95vw;
+    width: 97vw;
   }
   .modal-img {
     height: auto;
@@ -461,12 +481,11 @@ li {
 .btn {
   display: grid;
   place-items: center;
-  width: 160px;
-  font-size: 1.5vw;
+  font-size: min(1rem, 2.5vw);
   color: #fff;
   cursor: pointer;
   margin: 2px;
-  padding: 1vw;
+  padding: 0.5vw;
   width: 20vw;
   border: none;
   background-size: 300% 100%;
@@ -485,7 +504,7 @@ li {
   transition: all 0.4s ease-in-out;
 }
 
-btn:active {
+.btn:active {
   background-position: 100% 0;
   moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
@@ -494,6 +513,50 @@ btn:active {
 }
 
 .btn {
+  background-image: linear-gradient(
+    to right,
+    #25aae1,
+    #4481eb,
+    #04befe,
+    #3f86ed
+  );
+  box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+}
+
+.menu-title-btn {
+  display: grid;
+  place-items: center;
+  color: #fff;
+  cursor: pointer;
+  margin: 2px;
+  padding: 1vw;
+  width: 25vw;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 10px;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.menu-title-btn:hover {
+  background-position: 100% 0;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.menu-title-btn:active {
+  background-position: 100% 0;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.menu-title-btn {
   background-image: linear-gradient(
     to right,
     #25aae1,

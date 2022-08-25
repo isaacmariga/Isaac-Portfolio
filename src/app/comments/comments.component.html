@@ -10,14 +10,15 @@
 
 <body>
 
-  <div class="container">
 
+  <div class="container">
     <div class="half">
 
 
       <div class="text">
         <p>Kindly rate the site in order to help improve it further.<br><br>
-          <strong>Kindly follow the "live link" button below to go to the site and explore if you are yet
+          <strong>Kindly follow the <a target="blank" href="{{byId.link}}">live link</a> to go to the site and explore
+            if you are yet
             to.</strong><br><br>
         </p>
         <li> You can rate it based on the design, The User Experience and the Content.</li><br>
@@ -34,13 +35,13 @@
         Thank you in advance for your feedback
       </div>
       <div class="image-container">
-        <img class="image" src="assets/images/comp1.jpg" alt="image">
+        <img class="image" src="{{cloud}}{{byId.image}}" alt="image">
       </div>
       <div class="buttons">
-        <a href="#about">
+        <a target="blank" href="{{byId.link}}">
           <h5 class="btn">Live site</h5>
         </a>
-        <a href="">
+        <a target="blank" href="{{byId.github}}">
           <h5 class="btn">Github</h5>
         </a>
         <a href="#projects">
@@ -54,7 +55,7 @@
 
     <div class="half2">
       <div class="form-title">
-        <h1>Kindly rate the site</h1>
+        <h3>Kindly rate the site</h3>
       </div>
       <div class="block-items" *ngFor="let project of project">
 

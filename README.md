@@ -1,27 +1,47 @@
-# Portfolio
+# Isaac Wangombe Mariga's Portfolio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2.
+## Description
 
-## Development server
+A website showcasing the projects I have worked on, where people can view them and send me feedback
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+#### Author
 
-## Code scaffolding
+**[Isaac Wangombe.](https://github.com/isaacmariga) 24/08/2022.**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Landing Page
 
-## Build
+![Alt text](/src/assets/images/port.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Site
 
-## Running unit tests
+You can view the site **[here.](https://isaacmariga.github.io/Isaac-Portfolio/)**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Technologies Used
 
-## Running end-to-end tests
+### Backend
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- Python 3.10
+- Django MVC framework
+- Postgressql
+- Postman
 
-## Further help
+#### Frontend
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Typescript
+- Angular framework
+- HTML, CSS and Bootstrap
+
+#### Deployment and hosting
+
+- Heroku
+- Github
+
+## Support and contact details
+
+Primary E-mail Address: inmariga@gmail.com
+
+### License
+
+_MIT License_ [![License: MIT]](license/MIT)
+
+Copyright (c) 2022 **Isaac Wangombe**
